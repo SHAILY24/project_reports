@@ -1,60 +1,22 @@
-# Portfolio: project write-ups
+# Technical Write-Ups
 
-A few software projects I've worked on, written up with the metrics, the architecture decisions, and the parts that were hard. Client names and sensitive details are stripped; the technical story is intact.
+A set of short engineering write-ups. Each documents the technical substance of a piece of work: the problem, the approach, the stack, and the technical outcome. All client identity, business domain, purpose, data, and metrics have been removed by design. The targets are described only in neutral technical terms.
 
-## What's here
+## Write-ups by technique
 
-Each write-up covers a real project that shipped to production. They include before/after numbers, the architecture choices I made and why, and the bugs that ate the most time.
+- [Turnstile-Gated Login Bypass for an Unattended Pipeline](turnstile-gated-login-bypass-for-an-unattended-pipeline.md)
+- [Internal-API Extraction Across Twenty Vendor Sites](internal-api-extraction-across-twenty-vendor-sites.md)
+- [Parallel-Fetch and Frequency-Normalized Ranking Script](parallel-fetch-and-frequency-normalized-ranking-script.md)
+- [Incremental Three-Way Sync Scraper With Cross-Source Dedup](incremental-three-way-sync-scraper-with-cross-source-dedup.md)
+- [Reverse-Engineering a Signed-Request API for Headless Extraction](reverse-engineering-a-signed-request-api-for-headless-extraction.md)
+- [Real-Time Feed Aggregator With Request-Level Anti-Bot Bypass](realtime-feed-aggregator-with-request-level-anti-bot-bypass.md)
+- [Image-Tile Reconstruction From a Public Reference Site](image-tile-reconstruction-from-a-public-reference-site.md)
+- [Migrating a Browser Script to a Rate-Limited Platform API](migrating-a-browser-script-to-a-rate-limited-platform-api.md)
+- [Translation-API Integration With Edge-Case Handling](translation-api-integration-with-edge-case-handling.md)
+- [Multi-Portal Scraping With Anti-Bot Bypass and Fuzzy Matching](multi-portal-scraping-with-anti-bot-bypass-and-fuzzy-matching.md)
 
-Things I tend to work on:
+## Confidentiality
 
-- Performance work. Several of these involved 10x to 30x speedups from rethinking the architecture, not micro-tuning.
-- API work, including reverse-engineering undocumented endpoints when no SDK exists.
-- Automation that runs unattended and recovers from its own failures.
-- Full stack, backend through to the interface users actually touch.
+These write-ups carry technical detail only. No client, no business domain, no client data, and no client figures appear in any of them.
 
-Languages and tools I reach for: Python, JavaScript/TypeScript, Go, Rust. Async with Trio and asyncio. HTTP/REST, WebSockets, browser automation. CI/CD, containers, the usual deployment plumbing. Git on Linux, Windows, and macOS.
-
-## Featured project
-
-### [Slack analytics automation](./slack_report_generator.md)
-
-20-30x faster, fully automated, runs against a 228-user workspace.
-
-A volunteer org had a slow manual Slack analytics script. I rebuilt it. Report generation dropped from 6-10 minutes to 15-20 seconds, and the whole thing now runs on a weekly/monthly schedule with no one watching it.
-
-Stack: Python, Playwright, httpx, Trio, async/await, rate limiting with exponential backoff. The interesting bits:
-
-- Reverse-engineered Slack's internal search API by watching network traffic, instead of driving the UI.
-- Structured concurrency with Trio for parallel queries.
-- API-first with a browser-automation fallback when a request fails.
-- Works the same on Windows, macOS, and Linux.
-
-## How I work
-
-Every write-up here leads with the numbers because that's what mattered to the client: before/after timings, friction removed, downtime avoided, room to grow.
-
-On the engineering side I care about modular code with clear boundaries, error handling that degrades gracefully instead of crashing, and documentation a non-developer can follow. The approach is usually the same: find the root cause before touching anything, weigh a few designs, build in small steps with validation, then hand off with notes someone else can act on.
-
-## By the numbers
-
-Across these projects:
-
-- 20-30x performance gains from architectural changes
-- Manual workflows taken to 100% automated
-- ~100% success rates once retry and fallback logic was in place
-- 228+ users supported in production
-- thousands of end-user hours saved
-
-## Links
-
-[![GitHub](https://img.shields.io/badge/GitHub-SHAILY24-181717?style=for-the-badge&logo=github)](https://github.com/SHAILY24)
-[![Portfolio](https://img.shields.io/badge/Portfolio-project__reports-blue?style=for-the-badge)](https://github.com/SHAILY24/project_reports)
-
-New write-ups get added as projects wrap. Each one has the problem statement, the architecture and the decisions behind it, code samples, the results, and what went wrong along the way.
-
-All projects keep client confidentiality. Organization names, URLs, and personal identities are removed; the technical and business detail stays.
-
-## License
-
-Project documentation here is available under the MIT License. Code samples are for demonstration.
+MIT License.
